@@ -5,10 +5,24 @@
   <ion-card-content>
   <ion-list [inset]="true" lines="none">
     <ion-item>
-      <ion-input [(ngModel)]="frase" label="Cita" placeholder="" type="text"></ion-input>
+      <ion-input [(ngModel)]="frase" 
+      required="required"
+      minlength="5"
+     #fraseInput="ngModel"
+      label="Cita" placeholder="" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!fraseInput.valid && !fraseInput.pristine">
+      <ion-text color="tertiary">Ingrese una frase de al menos 5 caracteres</ion-text>
     </ion-item>
     <ion-item>
-      <ion-input [(ngModel)]="autor" label="Autor" placeholder="Mahatma Gandhi" type="text"></ion-input> 
+      <ion-input [(ngModel)]="autor" 
+      required="required"
+      minlength="2"
+     #autorInput="ngModel"
+      label="Autor" placeholder="Mahatma Gandhi" type="text"></ion-input> 
+    </ion-item>
+    <ion-item *ngIf="!autorInput.valid && !autorInput.pristine">
+      <ion-text color="tertiary">Ingrese un autor con mínimo de 2 caracteres</ion-text>
     </ion-item>
   </ion-list>
   <ion-button (click)="onClick()" fill="clear">AGREGAR +</ion-button>

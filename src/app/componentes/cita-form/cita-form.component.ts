@@ -1,14 +1,15 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonList } from "@ionic/angular/standalone";
+import { IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonList, IonText } from "@ionic/angular/standalone";
 import { Cita } from 'src/app/modelo/cita';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cita-form',
   templateUrl: './cita-form.component.html',
   styleUrls: ['./cita-form.component.scss'],
   standalone: true,
-  imports :[FormsModule, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonList]
+  imports :[CommonModule, FormsModule, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonList,IonText]
 })
 export class CitaFormComponent  implements OnInit {
   //captura desde el formulario
