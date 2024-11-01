@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Gestión de citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- esta trabaja con el formulario recibido -->
+  <app-cita-form (onCreate)="gestionAgregarCita($event)"></app-cita-form>
+  <!-- Esta envia el formulario a gestion de citas -->
+  <app-cita-list [listaCitas]="gestionCitas" (onDestroy)="gestionEliminarCita($event)"></app-cita-list>
+</ion-content>

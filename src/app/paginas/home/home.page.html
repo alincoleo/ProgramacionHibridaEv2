@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Citas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/configuracion']" >
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  
+<!-- <app-gestion-de-citas [gestionCitas]="citaHome" (onCreate2)="recepcionFormularioDesdeGestionCitas($event)"></app-gestion-de-citas> -->
+<!-- creacion de boton flotante, alineación abajo a la derecha redirección a gestión de citas-->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button [routerLink]="['/gestion-citas']">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

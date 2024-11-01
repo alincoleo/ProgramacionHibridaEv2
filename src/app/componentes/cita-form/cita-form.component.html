@@ -1,0 +1,17 @@
+<ion-card color="light">
+  <ion-card-header>
+    <ion-card-title>Crear una nueva cita</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+  <ion-list [inset]="true" lines="none">
+    <ion-item>
+      <ion-input [(ngModel)]="frase" label="Cita" placeholder="" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="autor" label="Autor" placeholder="Mahatma Gandhi" type="text"></ion-input> 
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="onClick()" fill="clear">AGREGAR +</ion-button>
+</ion-card-content>
+
+</ion-card>
