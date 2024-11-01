@@ -11,6 +11,15 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
+  <ion-card *ngIf="citaAleatora">
+    <ion-card-header>
+      <ion-card-title>{{citaAleatora.frase}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{citaAleatora.autor}}
+    </ion-card-content> 
+    <ion-button *ngIf="eliminarCitas" fill="clear" (click)="onClick()">Eliminar Cita -</ion-button>
+  </ion-card>
   
 <!-- <app-gestion-de-citas [gestionCitas]="citaHome" (onCreate2)="recepcionFormularioDesdeGestionCitas($event)"></app-gestion-de-citas> -->
 <!-- creacion de boton flotante, alineación abajo a la derecha redirección a gestión de citas-->
