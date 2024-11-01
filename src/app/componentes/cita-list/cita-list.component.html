@@ -2,8 +2,8 @@
   <!-- tuve que usar mucho css para poder ordenar esto -->
   <ion-item *ngFor="let cita of listaCitas" lines="none">
     <ion-label >
-      <strong [(ngModel)]="frase">{{cita.frase}}</strong>
-      <ion-note color="medium" [(ngModel)]="autor">{{cita.autor}}</ion-note>
+      <strong >{{cita.frase}}</strong>
+      <ion-note color="medium" >{{cita.autor}}</ion-note>
     </ion-label>
     <ion-button slot="end" (click)="onClick()" fill="clear">
       <ion-icon name="trash-outline"></ion-icon>
