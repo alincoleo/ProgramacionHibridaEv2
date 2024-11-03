@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonButton,IonIcon,IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonItem, IonToggle } from '@ionic/angular/standalone';
-import { IonicModule, ToggleChangeEventDetail } from '@ionic/angular';
+import { ToggleChangeEventDetail } from '@ionic/angular';
 import { IonToggleCustomEvent } from '@ionic/core';
 import { ConfiguracionService } from 'src/app/servicio/configuracion.service';
 import { RouterModule } from '@angular/router';
@@ -21,7 +21,7 @@ export class ConfiguracionPage implements OnInit {
   eliminarCitasInicio =false
   constructor(
     private configuracionService : ConfiguracionService
-  ) {addIcons({homeOutline,createOutline,settingsOutline}) }
+  ) {addIcons({homeOutline,createOutline,settingsOutline}); }
 
   async ngOnInit() {
     this.eliminarCitasInicio= await this.configuracionService.getBoolean()

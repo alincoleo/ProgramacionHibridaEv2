@@ -27,8 +27,6 @@
     <ion-button *ngIf="eliminarCitas" fill="clear" (click)="onClick()">Eliminar Cita -</ion-button>
   </ion-card>
   
-<!-- <app-gestion-de-citas [gestionCitas]="citaHome" (onCreate2)="recepcionFormularioDesdeGestionCitas($event)"></app-gestion-de-citas> -->
-<!-- creacion de boton flotante, alineación abajo a la derecha redirección a gestión de citas-->
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
   <ion-fab-button [routerLink]="['/gestion-citas']">
     <ion-icon name="add"></ion-icon>

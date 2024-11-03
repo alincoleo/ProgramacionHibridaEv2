@@ -18,9 +18,6 @@ import { ConfiguracionService } from 'src/app/servicio/configuracion.service';
   imports: [IonCard,IonCardHeader,IonCardContent,IonCardTitle,IonNote,IonLabel,IonItem,IonList,IonFab,IonFabButton,IonButtons, IonButton, IonIcon, RouterModule, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class HomePage implements OnInit {
-
-  frase : string=""
-  autor : string=""
   citaHome:Cita[] =[]
   // para inicializar el objeto nulo
    citaAleatora:Cita|null=null

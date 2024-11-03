@@ -79,7 +79,7 @@ async abrirConexion() {
   await this.db.open()
 }
 
-// Recordar cerrar conexión donde se abren en el ciclo ngOnDestroy
+// Recordar cerrar conexión donde se abren, en el ciclo ngOnDestroy
 async cerrarConexion() {
   await this.db.close() 
 }
@@ -90,14 +90,7 @@ async cerrarConexion() {
     const sql=`INSERT INTO ${this.TABLE_NAME} (${this.TABLE_COL_FRASE},${this.TABLE_COL_AUTOR}) VALUES (?,?)`
     // aquí en el arreglo se ingresan los valores en "?" en el mismo orden en que se presentan en la query
     await this.db.run(sql,[cita.frase,cita.autor])
-
- 
   }
-
-  // consultarIndice(eliminar:Cita):number{
-  //   return 0
-  //   // return this.citas.findIndex(citaActual=>citaActual==eliminar)
-  // }
 
   async getCitas(): Promise<Cita[]>{
     // return this.citas
@@ -124,5 +117,4 @@ async cerrarConexion() {
     // con esto accedo al primer registro de la columna que le di el alias "CONTADOR"
     return resultado?.values?.[0].CONTADOR ?? 0
   }
-  
 }
