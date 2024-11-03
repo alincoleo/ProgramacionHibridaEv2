@@ -14,8 +14,6 @@ import { FormsModule } from '@angular/forms';
   imports:[FormsModule, CommonModule,IonCardHeader, IonCardTitle, IonCardSubtitle, IonList, IonItem,IonCard,IonToggle, IonLabel, IonNote,IonText,IonButton, IonIcon  ],
 })
 export class CitaListComponent  implements OnInit {
-  frase:string=""
-  autor:string=""
 
   @Input() listaCitas:Cita[]=[]
   @Output() onDestroy= new EventEmitter<Cita>()
@@ -24,9 +22,9 @@ export class CitaListComponent  implements OnInit {
 
   ngOnInit() {}
 
-  onClick(){
+  onClick(cita:Cita){
     //configuración del msj que se enviará (se crea un objeto cita nuevo por cada envio)
-    this.onDestroy.emit(new Cita(this.frase,this.autor))
+    this.onDestroy.emit(cita)
   }
 
 }

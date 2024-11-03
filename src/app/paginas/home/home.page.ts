@@ -5,7 +5,7 @@ import { IonCard,IonCardHeader,IonCardContent,IonCardTitle,IonNote,IonLabel,IonI
 import { Cita } from 'src/app/modelo/cita';
 import { CitaService } from 'src/app/servicio/cita.service';
 import { addIcons } from 'ionicons';
-import { settingsOutline, add, trashOutline } from 'ionicons/icons';
+import { settingsOutline, add, homeOutline,createOutline } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { ConfiguracionService } from 'src/app/servicio/configuracion.service';
 
@@ -32,16 +32,21 @@ export class HomePage implements OnInit {
     private configuracionService:ConfiguracionService
   ) {
     //importamos el icono de engranaje
-    addIcons({settingsOutline,trashOutline,add});
+    addIcons({settingsOutline,homeOutline,createOutline,add});
   }
-  private actualizar(){
-    this.citaHome=this.citaService.getCitas()
+  private async actualizar(){
+    this.citaHome= await this.citaService.getCitas()
   }
-  //carga de datos al inicio del ciclo de vida
-  ngOnInit(): void {
-    this.actualizar()
-    this.getCitaAleatoria()
-    this.getStatusEliminar()
+  //carga de datos al inicio del ciclo de vida se elimina la promesa ya que se espera un vacio
+  async ngOnInit() {
+    // esto es importante, sin eso no abre la conexión
+    await this.citaService.iniciarPlugin()
+    await this.actualizar()
+     this.getCitaAleatoria()
+     this.getStatusEliminar()
+  }
+  async ngOnDestroy(){
+    await this.citaService.cerrarConexion
   }
 // No me funcionaba porque no volvía a validar el status al redireccionar
   ionViewWillEnter() {
@@ -49,23 +54,27 @@ export class HomePage implements OnInit {
   }
 
   getCitaAleatoria() {
+    // me faltaba actualizar la BBDD al entrar a cita aleatoria
+    console.log("ingresando a cita aleatoria "+this.citaHome.length)
     if (this.citaHome.length > 0) {
       const indiceAleatorio = Math.floor(Math.random() * this.citaHome.length);
+      console.log("se obtuvo un indice "+indiceAleatorio)
       this.citaAleatora = this.citaHome[indiceAleatorio];
+      console.log("se obtuvo una cita "+this.citaAleatora)
     } else {
       this.citaAleatora = null;
     }
   }
 
-  getStatusEliminar(){
-    this.eliminarCitas=this.configuracionService.getBoolean()
+  async getStatusEliminar(){
+    this.eliminarCitas= await this.configuracionService.getBoolean()
   }
-  onClick(){
-    console.log("hello")
-     if(this.citaAleatora!=null){  
-     this.citaService.eliminarCita(this.citaService.consultarIndice(this.citaAleatora))
-     }
-      this.actualizar()
-      this.getCitaAleatoria()
+
+  async onClick(){
+    if(this.citaAleatora!=null){  
+      await this.citaService.eliminarCita(this.citaAleatora)
+    }
+    await this.actualizar()
+    this.getCitaAleatoria()
   }
 }

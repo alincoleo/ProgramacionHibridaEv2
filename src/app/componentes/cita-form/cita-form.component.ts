@@ -25,7 +25,7 @@ export class CitaFormComponent  implements OnInit {
   //momento en que se enviará el mensaje
   onClick(){
     //configuración del msj que se enviará (se crea un objeto cita nuevo por cada envio)
-    this.onCreate.emit(new Cita(this.frase,this.autor))
+    this.onCreate.emit( {frase: this.frase,autor: this.autor})
   }
 
 }
